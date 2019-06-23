@@ -5,7 +5,7 @@ html{
 .js-calculator{
   border: 1px solid #000;
   background-color: #000;
-  width: 254px;
+  width: 256px;
   padding: 15px 10px;
   margin: 60px auto;
   
@@ -16,8 +16,10 @@ html{
   color: #fff;
   font-size: 2rem;
   text-align: right;
-  padding: 15px 6px 0 0;
+  padding: 40px 6px 0 0;
   height: 55px;
+  border: 1px solid rgb(51, 51, 51);
+  margin-bottom: 15px;
 }
 
 button{
