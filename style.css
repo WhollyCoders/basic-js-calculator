@@ -1,49 +1,54 @@
 html{
   background-color: beige;
+  font-family: "century gothic", arial;
 }
 
 .js-calculator{
   border: 1px solid #000;
   background-color: #000;
-  width: 256px;
+  width: 420px;
   padding: 15px 10px;
   margin: 60px auto;
   
 }
 
+.js-calc-display-container{
+  padding: 15px 10px;
+}
+
 #js-cal-display{
   background-color: #000;
   color: #fff;
-  font-size: 2rem;
+  font-size: 3.5rem;
   text-align: right;
-  padding: 40px 6px 0 0;
+  padding: 40px 6px 20px 6px;
   height: 55px;
   border: 1px solid rgb(51, 51, 51);
   margin-bottom: 15px;
 }
 
 button{
-  width: 60px;
-  height: 60px;
-  font-size: 1.25rem;
+  width: 100px;
+  height: 100px;
+  font-size: 2.25rem;
   border: none;
   margin: 2px 0;
   border-radius: 50%;
 }
 
-button.orange{
+button.btn-orange{
   background-color: orange;
   color: #fff;
 }
 
-button.darkgray{
+button.btn-darkgray{
   background-color: #333;
   color: #fff;
 }
 
-button.wide{
-  width: 124px;
+button.btn-wide{
+  width: 204px;
   text-align: left;
-  padding-left: 22px;
-  border-radius: 40px;
+  padding-left: 38px;
+  border-radius: 50px;
 }
