@@ -19,9 +19,9 @@ html{
 #js-cal-display{
   background-color: #000;
   color: #fff;
-  font-size: 3.5rem;
+  font-size: 3rem;
   text-align: right;
-  padding: 40px 6px 20px 6px;
+  padding: 40px 24px 25px 16px;
   height: 55px;
   border: 1px solid rgb(51, 51, 51);
   margin-bottom: 15px;

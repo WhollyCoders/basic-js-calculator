@@ -16,6 +16,11 @@ function getCurrentOperation(operation){
   return currentOperation;
 }
 
+function resetDisplay(){
+  setInitialDisplayValue();
+  equalButtonPressed = false;
+}
+
 function setCurrentOperation(operation){
   currentOperation = operation;
 }
@@ -24,13 +29,19 @@ function setInitialDisplayValue(){
   calculatorDisplay.innerHTML = "0";
 }
 
+function isEqualButtonActivated(){
+  return equalButtonPressed;
+}
+
 //Variables
-var buttonElement, buttonValue, displayValue, firstNumber, secondNumber, result;
+var buttonElement, buttonValue, displayValue, firstNumber, secondNumber, result, newDisplayValue;
 var numbers = [];
 var currentOperation = 'none';
-var maxDisplayCharacters = 10;
+var maxDisplayCharacters = 11;
+var equalButtonPressed = false;
 
 //Element Handles
+let numberButtons = document.getElementsByClassName("btn-number");
 let calculatorDisplay = document.getElementById("js-cal-display");
 let clearButton = document.getElementById("btn-clear");
 let oppositeButton = document.getElementById("btn-opposite");
@@ -53,6 +64,15 @@ let divisionButton = document.getElementById("btn-division");
 let equalButton = document.getElementById("btn-equal")
 
 //Event Listeners
+for(var l = 0; l < numberButtons.length; l++){
+  numberButtons[l].addEventListener('click', function(){
+    if(isEqualButtonActivated()){
+
+        resetDisplay();
+    }
+  });
+}
+
 clearButton.addEventListener("click", function() {
   calculatorDisplay.innerHTML = "0";
 });
@@ -77,7 +97,10 @@ oneButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -94,7 +117,10 @@ twoButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -110,7 +136,10 @@ threeButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -125,7 +154,10 @@ fourButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -140,7 +172,10 @@ fiveButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -155,7 +190,10 @@ sixButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -170,7 +208,10 @@ sevenButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -185,7 +226,10 @@ eightButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -200,7 +244,10 @@ nineButton.addEventListener("click", function() {
   if(displayValue == "0"){
     setDisplayValue(buttonValue);
   }else{
-    setDisplayValue(displayValue+buttonValue);
+    newDisplayValue = displayValue+buttonValue;
+    if( newDisplayValue.length <= maxDisplayCharacters ){
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -214,7 +261,12 @@ zeroButton.addEventListener("click", function() {
   buttonValue = buttonElement.innerHTML;
 
   if(displayValue != "0"){
-    setDisplayValue(displayValue+buttonValue);
+
+    newDisplayValue = displayValue+buttonValue;
+    if(newDisplayValue.length <= maxDisplayCharacters){
+
+      setDisplayValue(displayValue+buttonValue);
+    }
   }
 
 });
@@ -229,7 +281,11 @@ decimalButton.addEventListener("click", function() {
 
   if(!displayValue.includes(".")){
 
+    newDisplayValue = displayValue+buttonValue;
+    if(newDisplayValue.length <= maxDisplayCharacters){
+
       setDisplayValue(displayValue+buttonValue);
+    }
   
   }
 
@@ -244,6 +300,36 @@ additionButton.addEventListener("click", function(e) {
   setInitialDisplayValue();
 
 });
+
+subtractionButton.addEventListener("click", function(e) {
+
+  let currentButtonElement = e.target;
+
+  addDisplayValueToArray();
+  setCurrentOperation(currentButtonElement.name);
+  setInitialDisplayValue();
+
+});
+
+multiplicationButton.addEventListener("click", function(e) {
+
+  let currentButtonElement = e.target;
+
+  addDisplayValueToArray();
+  setCurrentOperation(currentButtonElement.name);
+  setInitialDisplayValue();
+
+});
+divisionButton.addEventListener("click", function(e) {
+
+  let currentButtonElement = e.target;
+
+  addDisplayValueToArray();
+  setCurrentOperation(currentButtonElement.name);
+  setInitialDisplayValue();
+
+});
+
 
 equalButton.addEventListener("click", function() {
 
@@ -276,5 +362,6 @@ equalButton.addEventListener("click", function() {
 
   setDisplayValue(result);
   numbers = [];
+  equalButtonPressed = true;
 
 });
